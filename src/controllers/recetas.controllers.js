@@ -11,6 +11,18 @@ export const listarRecetas = async(req, res) => {
     }
 };
 
+export const obtenerRecetas = async (req,res)=>{
+ try{
+  console.log(req.params.id)
+  const recetaBuscada = await Receta.findById(req.params.id);
+  res.status(200).json(recetaBuscada);
+ }catch(error){
+   console.log(error)
+   res.status(404).json({mensaje: 'No se encontro la receta solicitada'})
+ }
+}
+
+
 export const crearReceta = async (req, res) => {
   try {
     console.log(req.body);

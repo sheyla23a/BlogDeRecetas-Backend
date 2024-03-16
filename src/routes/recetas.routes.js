@@ -1,8 +1,9 @@
 import { Router} from "express";
-import {crearReceta, listarRecetas} from "../controllers/recetas.controllers.js"
+import {crearReceta, listarRecetas, obtenerRecetas} from "../controllers/recetas.controllers.js"
 
 const router = Router();
 
 router.route('/recetas').get(listarRecetas).post(crearReceta)
+router.route('/receta/:id').get(obtenerRecetas)
 
 export default router;
