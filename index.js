@@ -4,6 +4,7 @@ import 'dotenv/config';
 import morgan from 'morgan';
 import {fileURLToPath} from 'url';
 import path from 'path';
+import recetasRouter from './src/routes/recetas.routes.js';
 
 const app = express();
 app.set('port',process.env.PORT || 4000);
@@ -19,7 +20,5 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename)
 app.use(express.static(path.join(__dirname,'/public')))
 
-app.get('/nuevo',(req,res)=>{
-    console.log('alguien solicito algo')
-    res.send('respuesta desde nuestro backend del Blog de recetas')
-    })
+
+app.use('/api', recetasRouter)
