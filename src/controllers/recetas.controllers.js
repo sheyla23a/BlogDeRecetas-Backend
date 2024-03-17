@@ -13,7 +13,6 @@ export const listarRecetas = async(req, res) => {
 
 export const obtenerRecetas = async (req,res)=>{
  try{
-  console.log(req.params.id)
   const recetaBuscada = await Receta.findById(req.params.id);
   res.status(200).json(recetaBuscada);
  }catch(error){
@@ -25,7 +24,6 @@ export const obtenerRecetas = async (req,res)=>{
 
 export const crearReceta = async (req, res) => {
   try {
-    console.log(req.body);
     const recetaNueva = new Receta(req.body);
     await recetaNueva.save();
     res.status(201).json({
@@ -52,3 +50,17 @@ try{
     res.status(500).json({mensaje:'Ocurrio un error al intentar editar la receta'})
 }
 }
+
+export const borrarReceta = async(req,res)=>{
+    try{
+     const buscarReceta = await Receta.findById(req.params.id);
+     if(!buscarReceta){
+       return res.status(404).json({mensaje:'No se pudo eliminar la receta, el id es incorrecto'})
+     }
+     await Receta.findByIdAndDelete(req.params.id);
+     res.status(200).json({mensaje:'La receta fue eliminada exitosamente'});
+    }catch(error){
+        console.error(error)
+        res.status(500).json({mensaje:'Ocurrio un error al intentar borrar la receta'})
+    }
+    }
