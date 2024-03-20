@@ -5,7 +5,6 @@ Este es el repositorio del backend para la aplicación web "Doña Pirola - Blog 
 ## Enlace del Proyecto: 
 [Doña Pirola - Backend](https://github.com/sheyla23a/BlogDeRecetas-Backend.git)
 
-![Logo del Proyecto](./src/assets/logoDoñaPirola.png)
 
 ## Autora del proyecto😄
 - Sheyla Astorga ✅
